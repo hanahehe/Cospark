@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Brand palette — matches the reference login screen exactly */
+  --ink: #0e1225;
+  --ink-2: #161b33;
+  --ink-3: #1d2340;
+  --paper: #f7f4ec;
+  --paper-dim: #ede9dd;
+  --spark: #ffb447;
+  --ember: #ff6b4a;
+  --wire: #5eead4;
+  --slate: #9ba0be;
+  --slate-dark: #4a4f63;
+
+  --line-dark: rgba(247, 244, 236, 0.12);
+  --line-light: rgba(14, 18, 37, 0.1);
+
+  --glass-dark: rgba(255, 255, 255, 0.05);
+  --glass-dark-strong: rgba(255, 255, 255, 0.09);
+  --glass-light: rgba(255, 255, 255, 0.66);
+  --glass-light-strong: rgba(255, 255, 255, 0.85);
+  --glass-blur: 22px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 20px 60px rgba(14, 18, 37, 0.35);
+  --shadow-lift: 0 10px 24px rgba(14, 18, 37, 0.28);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-med: 280ms;
+  --dur-slow: 450ms;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}

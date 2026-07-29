@@ -1,0 +1,23 @@
+.coming-soon {
+  padding: 56px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--paper);
+}
+.coming-soon .mono {
+  color: var(--spark);
+}
+.coming-soon p {
+  color: var(--slate);
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .coming-soon {
+    padding: 40px 24px;
+  }
+}
