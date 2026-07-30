@@ -32,6 +32,7 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
       timeout: 2000ms
 
   rabbitmq:
@@ -65,6 +66,8 @@ cospark:
     expiration-ms: 86400000
     refresh-expiration-ms: 604800000
   frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
   freemium:
     daily-request-limit: 5
   rate-limit:
@@ -76,6 +79,9 @@ management:
     web:
       exposure:
         include: health,info,metrics
+  health:
+    mail:
+      enabled: false
 
 logging:
   level:
