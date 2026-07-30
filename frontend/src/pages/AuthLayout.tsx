@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { usePageEntrance } from '../hooks/usePageEntrance'
+import { Logo } from '../components/Logo'
 import './Auth.css'
 
 const CHIPS = [
@@ -14,10 +15,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="auth-screen" ref={ref}>
       <div className="auth-panel-left">
-        <div className="auth-logo reveal">
-          <span className="dot" />
-          CoSpark
-        </div>
+        <Logo size={23} className="auth-logo reveal" />
 
         <div className="auth-quote reveal">
           <span className="mark">&ldquo;</span>

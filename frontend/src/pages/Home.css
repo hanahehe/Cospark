@@ -11,19 +11,7 @@
   padding: 28px 56px;
 }
 .home-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
   font-size: 20px;
-  font-weight: 600;
-}
-.home-logo .dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--spark);
-  box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.18), 0 0 14px 2px rgba(255, 180, 71, 0.55);
 }
 .home-nav-actions {
   display: flex;

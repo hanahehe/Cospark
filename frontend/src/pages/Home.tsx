@@ -1,6 +1,7 @@
 import { Navigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { usePageEntrance } from '../hooks/usePageEntrance'
+import { Logo } from '../components/Logo'
 import './Home.css'
 
 const CHIPS = [
@@ -18,10 +19,7 @@ export function Home() {
   return (
     <div className="home bg-glow" ref={ref}>
       <header className="home-nav reveal">
-        <div className="home-logo">
-          <span className="dot" />
-          CoSpark
-        </div>
+        <Logo size={24} className="home-logo" />
         <div className="home-nav-actions">
           <Link to="/login" className="btn btn-ghost">
             Log in

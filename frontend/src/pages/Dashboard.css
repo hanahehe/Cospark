@@ -58,12 +58,6 @@
   opacity: 0.75;
 }
 
-.dashboard-empty {
-  color: var(--slate);
-  font-size: 14px;
-  padding: 20px 0;
-}
-
 .match-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -146,32 +140,6 @@
   color: var(--slate);
   font-size: 13px;
 }
-.request-status {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.status-pending {
-  color: var(--spark);
-  background: rgba(255, 180, 71, 0.12);
-  border: 1px solid rgba(255, 180, 71, 0.25);
-}
-.status-accepted {
-  color: var(--wire);
-  background: rgba(94, 234, 212, 0.12);
-  border: 1px solid rgba(94, 234, 212, 0.25);
-}
-.status-rejected,
-.status-withdrawn {
-  color: var(--slate);
-  background: rgba(155, 160, 190, 0.1);
-  border: 1px solid rgba(155, 160, 190, 0.2);
-}
-
 @media (max-width: 760px) {
   .dashboard-stats {
     grid-template-columns: repeat(2, 1fr);

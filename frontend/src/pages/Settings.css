@@ -1,0 +1,67 @@
+.settings-section {
+  padding: 26px 28px;
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+.settings-section h2 {
+  font-size: 16px;
+  color: var(--paper);
+  margin-bottom: 18px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: 14px;
+}
+.settings-row:last-child {
+  border-bottom: none;
+}
+.settings-row .mono {
+  color: var(--slate);
+}
+.settings-row span:last-child {
+  color: var(--paper);
+}
+
+.plan-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--spark);
+  background: rgba(255, 180, 71, 0.12);
+  border: 1px solid rgba(255, 180, 71, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.usage-block {
+  margin-top: 8px;
+}
+.usage-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+.usage-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.usage-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--spark), var(--ember));
+  border-radius: 999px;
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+.settings-danger p {
+  color: var(--slate);
+  font-size: 13px;
+  margin-bottom: 16px;
+}

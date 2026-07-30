@@ -1,6 +1,8 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { useLayoutEffect, useRef } from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import gsap from 'gsap'
 import { useAuth } from '../../context/AuthContext'
-import { usePageEntrance } from '../../hooks/usePageEntrance'
+import { Logo } from '../Logo'
 import './AppShell.css'
 
 const NAV_ITEMS = [
@@ -15,15 +17,23 @@ const NAV_ITEMS = [
 
 export function AppShell() {
   const { user, logout } = useAuth()
-  const contentRef = usePageEntrance<HTMLDivElement>()
+  const contentRef = useRef<HTMLDivElement | null>(null)
+  const location = useLocation()
+
+  useLayoutEffect(() => {
+    if (!contentRef.current) return
+    gsap.killTweensOf(contentRef.current)
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+    )
+  }, [location.pathname])
 
   return (
     <div className="shell">
       <aside className="shell-sidebar glass-strong">
-        <div className="shell-logo">
-          <span className="dot" />
-          CoSpark
-        </div>
+        <Logo size={20} className="shell-logo" />
         <nav className="shell-nav">
           {NAV_ITEMS.map((item) => (
             <NavLink key={item.to} to={item.to} className={({ isActive }) => `shell-nav-link${isActive ? ' active' : ''}`}>
