@@ -19,7 +19,12 @@ export const tokenStore = {
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? '/api',
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    // Skips ngrok's free-tier browser-warning interstitial page, which would
+    // otherwise return an HTML page instead of the actual JSON response.
+    'ngrok-skip-browser-warning': 'true',
+  },
 })
 
 api.interceptors.request.use((config) => {

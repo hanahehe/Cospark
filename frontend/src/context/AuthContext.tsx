@@ -30,7 +30,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     authApi
       .me()
       .then(setUser)
-      .catch(() => tokenStore.clear())
+      .catch(() => {
+        // A failed check here doesn't necessarily mean the token is invalid —
+        // it could be a network blip. An actual 401 already clears the token
+        // via the response interceptor in api.ts; don't do it again here.
+      })
       .finally(() => setIsLoading(false))
   }, [])
 
