@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { PageHeader } from '../components/PageHeader'
 import { TagInput } from '../components/TagInput'
+import { Avatar } from '../components/Avatar'
 import { profileApi } from '../lib/endpoints'
 import { useToast } from '../context/ToastContext'
 import { usePageEntrance } from '../hooks/usePageEntrance'
@@ -37,6 +38,7 @@ export function Profile() {
   const profileQuery = useQuery({ queryKey: ['profile', 'me'], queryFn: profileApi.me })
   const [form, setForm] = useState<ProfileUpdateRequest>(EMPTY_FORM)
   const [hydrated, setHydrated] = useState(false)
+  const avatarInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (profileQuery.data && !hydrated) {
@@ -69,6 +71,31 @@ export function Profile() {
     onError: (err) => showToast(err instanceof Error ? err.message : 'Could not save profile', 'error'),
   })
 
+  const avatarMutation = useMutation({
+    mutationFn: (file: File) => profileApi.uploadAvatar(file),
+    onSuccess: (updated) => {
+      queryClient.setQueryData(['profile', 'me'], updated)
+      queryClient.invalidateQueries({ queryKey: ['matches'] })
+      showToast('Profile photo updated', 'success')
+    },
+    onError: (err) => showToast(err instanceof Error ? err.message : 'Could not upload photo', 'error'),
+  })
+
+  function handleAvatarChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image must be 5MB or smaller', 'error')
+      return
+    }
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      showToast('Image must be JPEG, PNG, or WebP', 'error')
+      return
+    }
+    avatarMutation.mutate(file)
+  }
+
   function update<K extends keyof ProfileUpdateRequest>(key: K, value: ProfileUpdateRequest[K]) {
     setForm((f) => ({ ...f, [key]: value }))
   }
@@ -94,6 +121,32 @@ export function Profile() {
         title="Your profile"
         subtitle="This is what other founders see when your profile shows up in a match."
       />
+
+      <div className="profile-avatar-row glass reveal">
+        <button
+          type="button"
+          className="profile-avatar-btn"
+          onClick={() => avatarInputRef.current?.click()}
+          disabled={avatarMutation.isPending}
+          aria-label="Change profile photo"
+        >
+          <Avatar avatarUrl={profileQuery.data?.avatarUrl} firstName={form.firstName} lastName={form.lastName} size={88} />
+          <span className="profile-avatar-overlay">{avatarMutation.isPending ? 'Uploading…' : 'Change photo'}</span>
+        </button>
+        <input
+          ref={avatarInputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          hidden
+          onChange={handleAvatarChange}
+        />
+        <div>
+          <p className="profile-avatar-name">
+            {form.firstName} {form.lastName}
+          </p>
+          <p className="profile-avatar-hint">JPEG, PNG, or WebP — up to 5MB.</p>
+        </div>
+      </div>
 
       <form className="profile-form glass reveal" onSubmit={handleSubmit}>
         <div className="profile-grid">

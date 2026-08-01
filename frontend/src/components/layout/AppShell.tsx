@@ -1,8 +1,11 @@
 import { useLayoutEffect, useRef } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 import gsap from 'gsap'
 import { useAuth } from '../../context/AuthContext'
 import { Logo } from '../Logo'
+import { Avatar } from '../Avatar'
+import { profileApi } from '../../lib/endpoints'
 import './AppShell.css'
 
 const NAV_ITEMS = [
@@ -19,6 +22,7 @@ export function AppShell() {
   const { user, logout } = useAuth()
   const contentRef = useRef<HTMLDivElement | null>(null)
   const location = useLocation()
+  const profileQuery = useQuery({ queryKey: ['profile', 'me'], queryFn: profileApi.me })
 
   useLayoutEffect(() => {
     if (!contentRef.current) return
@@ -42,10 +46,15 @@ export function AppShell() {
           ))}
         </nav>
         <div className="shell-user">
-          <div className="shell-user-name">
-            {user?.firstName} {user?.lastName}
+          <div className="shell-user-identity">
+            <Avatar avatarUrl={profileQuery.data?.avatarUrl} firstName={user?.firstName} lastName={user?.lastName} size={36} />
+            <div>
+              <div className="shell-user-name">
+                {user?.firstName} {user?.lastName}
+              </div>
+              <div className="shell-user-email mono">{user?.email}</div>
+            </div>
           </div>
-          <div className="shell-user-email mono">{user?.email}</div>
           <button type="button" className="btn btn-ghost shell-logout" onClick={logout}>
             Log out
           </button>

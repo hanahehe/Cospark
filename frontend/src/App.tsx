@@ -10,6 +10,7 @@ import { Ideas } from './pages/Ideas'
 import { Requests } from './pages/Requests'
 import { Notifications } from './pages/Notifications'
 import { Profile } from './pages/Profile'
+import { PublicProfile } from './pages/PublicProfile'
 import { Settings } from './pages/Settings'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/requests" element={<Requests />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profiles/:userId" element={<PublicProfile />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
       </Route>

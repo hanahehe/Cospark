@@ -73,6 +73,9 @@ services:
       FRONTEND_URL: ${FRONTEND_URL}
       MAIL_HOST: mailhog
       MAIL_PORT: 1025
+      UPLOADS_DIR: /app/uploads
+    volumes:
+      - backend_uploads:/app/uploads
     depends_on:
       mysql:
         condition: service_healthy
@@ -102,3 +105,4 @@ volumes:
   mysql_data:
   redis_data:
   rabbitmq_data:
+  backend_uploads:

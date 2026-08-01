@@ -54,15 +54,26 @@
   padding-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+}
+.shell-user-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 .shell-user-name {
   font-size: 14px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .shell-user-email {
   color: var(--slate);
-  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .shell-logout {
   width: 100%;

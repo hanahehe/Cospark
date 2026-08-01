@@ -18,12 +18,17 @@
 }
 
 .request-full-main {
+  display: block;
   flex: 1;
   min-width: 220px;
 }
 .request-full-main strong {
   font-size: 15px;
   color: var(--paper);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.request-full-main:hover strong {
+  color: var(--spark);
 }
 .request-idea-tag {
   margin-left: 10px;

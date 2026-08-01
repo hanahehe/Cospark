@@ -77,6 +77,12 @@
   justify-content: space-between;
   gap: 12px;
 }
+.match-card-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
 .match-card-head h3 {
   font-size: 16px;
   color: var(--paper);
@@ -131,9 +137,17 @@
   gap: 16px;
   flex-wrap: wrap;
 }
+.request-row-identity {
+  display: block;
+  min-width: 0;
+}
 .request-row strong {
   font-size: 14px;
   color: var(--paper);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.request-row-identity:hover strong {
+  color: var(--spark);
 }
 .request-message {
   margin-top: 4px;

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { Avatar } from '../components/Avatar'
 import { collaborationApi, matchApi, notificationApi, profileApi } from '../lib/endpoints'
 import { usePageEntrance } from '../hooks/usePageEntrance'
 import './Dashboard.css'
@@ -54,14 +55,17 @@ export function Dashboard() {
           {matchesQuery.data?.map((m) => (
             <div key={m.profile.userId} className="match-card glass">
               <div className="match-card-head">
-                <div>
-                  <h3>
-                    {m.profile.firstName} {m.profile.lastName}
-                  </h3>
-                  <p className="match-headline">
-                    {m.profile.headline || m.profile.availability.replace('_', ' ').toLowerCase()}
-                  </p>
-                </div>
+                <Link to={`/profiles/${m.profile.userId}`} className="match-card-identity">
+                  <Avatar avatarUrl={m.profile.avatarUrl} firstName={m.profile.firstName} lastName={m.profile.lastName} size={40} />
+                  <div>
+                    <h3>
+                      {m.profile.firstName} {m.profile.lastName}
+                    </h3>
+                    <p className="match-headline">
+                      {m.profile.headline || m.profile.availability.replace('_', ' ').toLowerCase()}
+                    </p>
+                  </div>
+                </Link>
                 <div className="match-score">{Math.round(m.score * 100)}%</div>
               </div>
               <p className="match-summary">{m.summary}</p>
@@ -92,12 +96,12 @@ export function Dashboard() {
         <div className="request-list">
           {receivedQuery.data?.content.map((r) => (
             <div key={r.id} className="request-row glass">
-              <div>
+              <Link to={`/profiles/${r.senderId}`} className="request-row-identity">
                 <strong>{r.senderName}</strong>
                 <p className="request-message">
                   {r.message || (r.ideaTitle ? `Interested in ${r.ideaTitle}` : 'Wants to collaborate')}
                 </p>
-              </div>
+              </Link>
               <span className={`request-status status-${r.status.toLowerCase()}`}>{r.status}</span>
             </div>
           ))}

@@ -1,0 +1,136 @@
+.public-profile-back {
+  margin-bottom: 20px;
+  padding: 9px 16px;
+  font-size: 13px;
+}
+
+.public-profile-header {
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.public-profile-header-info {
+  flex: 1;
+  min-width: 200px;
+}
+.public-profile-header-info h1 {
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--paper);
+}
+.public-profile-headline {
+  margin-top: 8px;
+  color: var(--slate);
+  font-size: 14px;
+}
+.public-profile-meta {
+  margin-top: 14px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--wire);
+  text-transform: capitalize;
+}
+.public-profile-meta span:not(:first-child) {
+  text-transform: none;
+}
+
+.public-profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.public-profile-links {
+  display: flex;
+  gap: 14px;
+}
+.public-profile-links a {
+  font-size: 13px;
+  color: var(--spark);
+  font-weight: 600;
+}
+.public-profile-links a:hover {
+  text-decoration: underline;
+}
+
+.public-profile-composer {
+  padding: 22px 28px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.public-profile-composer label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.public-profile-composer textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+}
+.public-profile-composer textarea:focus {
+  outline: none;
+  border-color: var(--spark);
+}
+.public-profile-composer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.public-profile-section {
+  padding: 26px 28px;
+  margin-bottom: 20px;
+}
+.public-profile-section h2 {
+  font-size: 16px;
+  color: var(--paper);
+  margin-bottom: 12px;
+}
+.public-profile-section p {
+  color: var(--slate);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.public-profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.public-profile-notfound {
+  padding: 56px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.public-profile-notfound p {
+  color: var(--slate);
+}
+
+@media (max-width: 600px) {
+  .public-profile-header {
+    flex-direction: column;
+  }
+  .public-profile-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+}

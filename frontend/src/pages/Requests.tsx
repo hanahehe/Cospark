@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { PageHeader } from '../components/PageHeader'
 import { collaborationApi } from '../lib/endpoints'
@@ -55,11 +56,11 @@ export function Requests() {
       <div className="request-full-list">
         {requestsQuery.data?.content.map((req) => (
           <div key={req.id} className="request-full-card glass card-interactive">
-            <div className="request-full-main">
+            <Link to={`/profiles/${tab === 'received' ? req.senderId : req.recipientId}`} className="request-full-main">
               <strong>{tab === 'received' ? req.senderName : req.recipientName}</strong>
               {req.ideaTitle && <span className="request-idea-tag">re: {req.ideaTitle}</span>}
               {req.message && <p className="request-full-message">{req.message}</p>}
-            </div>
+            </Link>
             <div className="request-full-side">
               <span className={`request-status status-${req.status.toLowerCase()}`}>{req.status}</span>
               {tab === 'received' && req.status === 'PENDING' && (

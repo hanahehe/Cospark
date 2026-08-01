@@ -40,6 +40,11 @@
   flex-direction: column;
   gap: 10px;
 }
+.search-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .search-card-head h3 {
   font-size: 16px;
   color: var(--paper);

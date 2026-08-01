@@ -33,6 +33,8 @@ coverage/
 
 # Spring
 backend/.gradle/
+backend/uploads/
+uploads/
 
 # Claude Code local session state
 .claude/scheduled_tasks.lock

@@ -38,6 +38,13 @@ export const profileApi = {
   me: () => api.get<ProfileResponse>('/profiles/me').then((r) => r.data),
   byUserId: (userId: number) => api.get<ProfileResponse>(`/profiles/${userId}`).then((r) => r.data),
   update: (body: ProfileUpdateRequest) => api.put<ProfileResponse>('/profiles/me', body).then((r) => r.data),
+  uploadAvatar: (file: File) => {
+    const form = new FormData()
+    form.append('file', file)
+    return api
+      .post<ProfileResponse>('/profiles/me/avatar', form, { headers: { 'Content-Type': 'multipart/form-data' } })
+      .then((r) => r.data)
+  },
   search: (params: ProfileSearchParams = {}) =>
     api
       .get<PageResponse<ProfileResponse>>('/profiles/search', {

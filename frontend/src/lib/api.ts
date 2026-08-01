@@ -17,8 +17,10 @@ export const tokenStore = {
   },
 }
 
+const resolvedBaseURL = import.meta.env.VITE_API_URL ?? '/api'
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? '/api',
+  baseURL: resolvedBaseURL,
   headers: {
     'Content-Type': 'application/json',
     // Skips ngrok's free-tier browser-warning interstitial page, which would
@@ -26,6 +28,17 @@ export const api = axios.create({
     'ngrok-skip-browser-warning': 'true',
   },
 })
+
+// Origin (no /api suffix) used to resolve server-relative asset paths like
+// avatarUrl, so they keep working across tunnel URL changes — only a
+// redeploy is needed, not touching stored data.
+const apiOrigin = resolvedBaseURL.replace(/\/api\/?$/, '')
+
+export function resolveAssetUrl(path: string | null | undefined): string | null {
+  if (!path) return null
+  if (/^https?:\/\//.test(path)) return path
+  return `${apiOrigin}${path}`
+}
 
 api.interceptors.request.use((config) => {
   const token = tokenStore.getAccessToken()

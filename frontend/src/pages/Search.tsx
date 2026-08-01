@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { PageHeader } from '../components/PageHeader'
+import { Avatar } from '../components/Avatar'
 import { collaborationApi, profileApi } from '../lib/endpoints'
 import { useToast } from '../context/ToastContext'
 import { usePageEntrance } from '../hooks/usePageEntrance'
@@ -97,14 +99,15 @@ export function Search() {
       <div className="search-grid">
         {resultsQuery.data?.content.map((profile: ProfileResponse) => (
           <div key={profile.userId} className="search-card glass card-interactive">
-            <div className="search-card-head">
+            <Link to={`/profiles/${profile.userId}`} className="search-card-head">
+              <Avatar avatarUrl={profile.avatarUrl} firstName={profile.firstName} lastName={profile.lastName} size={44} />
               <div>
                 <h3>
                   {profile.firstName} {profile.lastName}
                 </h3>
                 <p className="search-headline">{profile.headline || profile.availability.replace('_', ' ').toLowerCase()}</p>
               </div>
-            </div>
+            </Link>
             {profile.location && <p className="search-location mono">{profile.location}</p>}
             {profile.bio && <p className="search-bio">{profile.bio}</p>}
             {profile.skills.length > 0 && (
