@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { to: '/search', label: 'Search' },
   { to: '/ideas', label: 'Startup Ideas' },
   { to: '/requests', label: 'Requests' },
+  { to: '/chat', label: 'Messages' },
   { to: '/notifications', label: 'Notifications' },
   { to: '/profile', label: 'Profile' },
   { to: '/settings', label: 'Settings' },

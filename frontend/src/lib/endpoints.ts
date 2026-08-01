@@ -2,6 +2,7 @@ import { api } from './api'
 import type {
   Availability,
   AuthResponse,
+  ChatMessageResponse,
   CollaborationRequestCreate,
   CollaborationRequestResponse,
   IdeaCreateRequest,
@@ -82,6 +83,16 @@ export const collaborationApi = {
     api.post<CollaborationRequestResponse>('/requests', body).then((r) => r.data),
   accept: (id: number) => api.patch<CollaborationRequestResponse>(`/requests/${id}/accept`).then((r) => r.data),
   reject: (id: number) => api.patch<CollaborationRequestResponse>(`/requests/${id}/reject`).then((r) => r.data),
+}
+
+export const chatApi = {
+  // page 0 is the most recent slice; higher pages walk backwards through history
+  messages: (conversationId: number, page = 0, size = 50) =>
+    api
+      .get<PageResponse<ChatMessageResponse>>(`/chat/${conversationId}/messages`, { params: { page, size } })
+      .then((r) => r.data),
+  send: (conversationId: number, content: string) =>
+    api.post<ChatMessageResponse>(`/chat/${conversationId}/messages`, { content }).then((r) => r.data),
 }
 
 export const subscriptionApi = {

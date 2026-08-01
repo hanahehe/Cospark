@@ -136,6 +136,7 @@ public class EntityMapper {
                 : msg.getSender().getEmail();
         return ChatMessageResponse.builder()
                 .id(msg.getId())
+                .conversationId(msg.getConversation().getId())
                 .senderId(msg.getSender().getId())
                 .senderName(senderName)
                 .content(msg.getContent())

@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -32,12 +35,32 @@ public class ChatService {
     private final EntityMapper mapper;
     private final SimpMessagingTemplate messagingTemplate;
 
+    /**
+     * Returns the most recent slice of a conversation, in chronological order.
+     *
+     * <p>Fetching is newest-first so that page 0 is what the user actually wants to see
+     * when they open a chat (and page 1, 2, ... walk backwards into history). Each page is
+     * then reversed so messages still read top-to-bottom oldest-to-newest in the UI.
+     */
     @Transactional(readOnly = true)
     public PageResponse<ChatMessageResponse> getMessages(Long userId, Long conversationId, int page, int size) {
         verifyAccess(userId, conversationId);
-        Page<ChatMessage> messages = messageRepository.findByConversationIdOrderByCreatedAtAsc(conversationId,
+
+        Page<ChatMessage> messages = messageRepository.findByConversationIdOrderByCreatedAtDesc(conversationId,
                 PageRequest.of(page, size));
-        return mapper.toPageResponse(messages.map(mapper::toChatMessageResponse));
+
+        List<ChatMessageResponse> chronological = new ArrayList<>(
+                messages.getContent().stream().map(mapper::toChatMessageResponse).toList());
+        Collections.reverse(chronological);
+
+        return PageResponse.<ChatMessageResponse>builder()
+                .content(chronological)
+                .page(messages.getNumber())
+                .size(messages.getSize())
+                .totalElements(messages.getTotalElements())
+                .totalPages(messages.getTotalPages())
+                .last(messages.isLast())
+                .build();
     }
 
     @Transactional

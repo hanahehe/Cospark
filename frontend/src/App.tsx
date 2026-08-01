@@ -8,6 +8,7 @@ import { Dashboard } from './pages/Dashboard'
 import { Search } from './pages/Search'
 import { Ideas } from './pages/Ideas'
 import { Requests } from './pages/Requests'
+import { Chat } from './pages/Chat'
 import { Notifications } from './pages/Notifications'
 import { Profile } from './pages/Profile'
 import { PublicProfile } from './pages/PublicProfile'
@@ -26,6 +27,8 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/ideas" element={<Ideas />} />
           <Route path="/requests" element={<Requests />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/:conversationId" element={<Chat />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profiles/:userId" element={<PublicProfile />} />

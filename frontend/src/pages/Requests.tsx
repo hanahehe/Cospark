@@ -63,6 +63,11 @@ export function Requests() {
             </Link>
             <div className="request-full-side">
               <span className={`request-status status-${req.status.toLowerCase()}`}>{req.status}</span>
+              {req.status === 'ACCEPTED' && req.conversationId != null && (
+                <Link to={`/chat/${req.conversationId}`} className="btn btn-ghost request-chat-link">
+                  Open chat
+                </Link>
+              )}
               {tab === 'received' && req.status === 'PENDING' && (
                 <div className="request-actions">
                   <button

@@ -40,6 +40,16 @@ export function resolveAssetUrl(path: string | null | undefined): string | null 
   return `${apiOrigin}${path}`
 }
 
+/**
+ * The STOMP endpoint. SockJS needs an absolute http(s) URL — not a ws:// one and not a
+ * relative path — so in local dev (where apiOrigin is empty and Vite proxies /ws) we fall
+ * back to the page's own origin.
+ */
+export function resolveWsUrl(): string {
+  const origin = apiOrigin || window.location.origin
+  return `${origin}/ws`
+}
+
 api.interceptors.request.use((config) => {
   const token = tokenStore.getAccessToken()
   if (token) {
