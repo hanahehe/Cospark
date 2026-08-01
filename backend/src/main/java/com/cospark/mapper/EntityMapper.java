@@ -4,6 +4,7 @@ import com.cospark.domain.entity.*;
 import com.cospark.dto.response.*;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -38,8 +39,8 @@ public class EntityMapper {
                 .portfolioUrl(profile.getPortfolioUrl())
                 .avatarUrl(profile.getAvatarUrl())
                 .yearsExperience(profile.getYearsExperience())
-                .skills(profile.getSkills())
-                .interests(profile.getInterests())
+                .skills(new HashSet<>(profile.getSkills()))
+                .interests(new HashSet<>(profile.getInterests()))
                 .createdAt(profile.getCreatedAt())
                 .updatedAt(profile.getUpdatedAt())
                 .bookmarked(bookmarked)
