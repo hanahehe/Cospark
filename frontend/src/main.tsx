@@ -6,6 +6,11 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './context/ToastContext'
+import { warmUpBackend } from './lib/api'
+
+// Kick the (free-tier, sleep-after-inactivity) backend awake before the user can
+// possibly submit anything, so waking happens during page load rather than mid-login.
+warmUpBackend()
 
 const queryClient = new QueryClient({
   defaultOptions: {

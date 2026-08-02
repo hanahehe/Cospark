@@ -20,7 +20,10 @@ import type {
 
 export const authApi = {
   register: (body: RegisterRequest) => api.post<AuthResponse>('/auth/register', body).then((r) => r.data),
-  login: (body: LoginRequest) => api.post<AuthResponse>('/auth/login', body).then((r) => r.data),
+  // Safe to repeat: logging in twice just issues a fresh token. Register is deliberately
+  // NOT retried — a retry after a lost response would hit "email already registered".
+  login: (body: LoginRequest) =>
+    api.post<AuthResponse>('/auth/login', body, { retryOnColdStart: true }).then((r) => r.data),
   logout: () => api.post<void>('/auth/logout'),
   me: () => api.get<UserSummary>('/auth/me').then((r) => r.data),
 }

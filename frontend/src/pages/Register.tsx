@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthLayout } from './AuthLayout'
 import { useAuth } from '../context/AuthContext'
+import { useSlowRequestHint } from '../hooks/useSlowRequestHint'
 
 interface RegisterForm {
   firstName: string
@@ -18,6 +19,7 @@ export function Register() {
   const [form, setForm] = useState<RegisterForm>(EMPTY_FORM)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const isSlow = useSlowRequestHint(submitting)
 
   function update<K extends keyof RegisterForm>(key: K, value: string) {
     setForm((f) => ({ ...f, [key]: value }))
@@ -93,8 +95,15 @@ export function Register() {
         {error && <p className="auth-error">{error}</p>}
 
         <button type="submit" className="btn auth-submit" disabled={submitting}>
-          {submitting ? 'Creating account…' : 'Create account'}
+          {!submitting ? 'Create account' : isSlow ? 'Waking the server…' : 'Creating account…'}
         </button>
+
+        {isSlow && (
+          <p className="auth-hint">
+            The server sleeps when it&rsquo;s not being used, so the first request after a
+            quiet spell can take up to a minute. Hang tight.
+          </p>
+        )}
       </form>
 
       <p className="auth-signup-line">

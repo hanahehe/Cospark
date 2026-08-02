@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthLayout } from './AuthLayout'
 import { useAuth } from '../context/AuthContext'
+import { useSlowRequestHint } from '../hooks/useSlowRequestHint'
 
 export function Login() {
   const { login } = useAuth()
@@ -10,6 +11,7 @@ export function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const isSlow = useSlowRequestHint(submitting)
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -58,8 +60,15 @@ export function Login() {
         {error && <p className="auth-error">{error}</p>}
 
         <button type="submit" className="btn auth-submit" disabled={submitting}>
-          {submitting ? 'Logging in…' : 'Log in'}
+          {!submitting ? 'Log in' : isSlow ? 'Waking the server…' : 'Logging in…'}
         </button>
+
+        {isSlow && (
+          <p className="auth-hint">
+            The server sleeps when it&rsquo;s not being used, so the first sign-in after a
+            quiet spell can take up to a minute. Hang tight.
+          </p>
+        )}
       </form>
 
       <p className="auth-signup-line">

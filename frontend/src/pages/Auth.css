@@ -152,6 +152,14 @@
   outline: none;
 }
 
+/* Explains a slow first request (free-tier server waking) without looking like an error. */
+.auth-hint {
+  margin: -6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--slate-dark);
+}
+
 .auth-error {
   margin: 0;
   padding: 10px 14px;
