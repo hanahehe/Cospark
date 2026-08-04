@@ -11,7 +11,7 @@
   align-items: center;
   gap: 14px;
   text-align: left;
-  border: 1px solid var(--line-dark);
+  border: 1px solid var(--line);
   cursor: pointer;
   color: inherit;
   font-family: inherit;
@@ -34,19 +34,19 @@
 }
 .notification-body strong {
   font-size: 14px;
-  color: var(--paper);
+  color: var(--text);
 }
 .notification-unread .notification-body strong {
-  color: var(--paper);
+  color: var(--text);
 }
 .notification-body p {
   margin-top: 4px;
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
 }
 
 .notification-time {
-  color: var(--slate-dark);
+  color: var(--text-subtle);
   font-size: 11px;
   white-space: nowrap;
   flex-shrink: 0;

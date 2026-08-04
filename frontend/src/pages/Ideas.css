@@ -15,7 +15,7 @@
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 8px;
 }
@@ -25,9 +25,9 @@
   width: 100%;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line-dark);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--paper);
+  border: 1px solid var(--line);
+  background: var(--field-bg);
+  color: var(--text);
   font-size: 14px;
 }
 .idea-form .field input:focus,
@@ -37,7 +37,7 @@
   border-color: var(--spark);
 }
 .idea-form .field select option {
-  background: var(--ink-2);
+  background: var(--surface-solid);
 }
 
 .idea-tabs {
@@ -61,11 +61,11 @@
 }
 .idea-card-head h3 {
   font-size: 18px;
-  color: var(--paper);
+  color: var(--text);
   margin-top: 8px;
 }
 .idea-domain {
-  color: var(--slate);
+  color: var(--text-muted);
   margin-top: 4px;
 }
 .idea-equity {
@@ -89,7 +89,7 @@
 }
 .stage-idea {
   background: rgba(155, 160, 190, 0.12);
-  color: var(--slate);
+  color: var(--text-muted);
   border: 1px solid rgba(155, 160, 190, 0.25);
 }
 .stage-validation {
@@ -110,7 +110,7 @@
 
 .idea-description {
   margin-top: 14px;
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.7;
 }
@@ -123,7 +123,7 @@
 .idea-footer {
   margin-top: 18px;
   padding-top: 16px;
-  border-top: 1px solid var(--line-dark);
+  border-top: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -131,7 +131,7 @@
   flex-wrap: wrap;
 }
 .idea-owner {
-  color: var(--slate-dark);
+  color: var(--text-subtle);
   font-size: 13px;
   transition: color var(--dur-fast) var(--ease-out);
 }
@@ -158,11 +158,11 @@
 }
 .idea-confirm-text {
   font-size: 13px;
-  color: var(--slate);
+  color: var(--text-muted);
 }
 .idea-confirm-yes {
   background: var(--ember);
-  color: var(--ink);
+  color: var(--on-accent);
   padding: 8px 14px;
   font-size: 13px;
 }

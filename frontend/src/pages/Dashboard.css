@@ -11,11 +11,11 @@
 .dashboard-header h1 {
   margin-top: 10px;
   font-size: clamp(24px, 3vw, 32px);
-  color: var(--paper);
+  color: var(--text);
 }
 .dashboard-header p {
   margin-top: 8px;
-  color: var(--slate);
+  color: var(--text-muted);
 }
 
 .dashboard-stats {
@@ -35,7 +35,7 @@
   font-weight: 600;
 }
 .stat-label {
-  color: var(--slate);
+  color: var(--text-muted);
 }
 
 .dashboard-section-head {
@@ -46,7 +46,7 @@
 }
 .dashboard-section-head h2 {
   font-size: 19px;
-  color: var(--paper);
+  color: var(--text);
 }
 .dashboard-link {
   color: var(--spark);
@@ -85,10 +85,10 @@
 }
 .match-card-head h3 {
   font-size: 16px;
-  color: var(--paper);
+  color: var(--text);
 }
 .match-headline {
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
   margin-top: 4px;
   text-transform: capitalize;
@@ -105,7 +105,7 @@
 }
 .match-summary {
   margin-top: 14px;
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -143,7 +143,7 @@
 }
 .request-row strong {
   font-size: 14px;
-  color: var(--paper);
+  color: var(--text);
   transition: color var(--dur-fast) var(--ease-out);
 }
 .request-row-identity:hover strong {
@@ -151,7 +151,7 @@
 }
 .request-message {
   margin-top: 4px;
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
 }
 @media (max-width: 760px) {

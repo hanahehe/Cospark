@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { useAuth } from '../../context/AuthContext'
 import { Logo } from '../Logo'
 import { Avatar } from '../Avatar'
+import { ThemeToggle } from '../ThemeToggle'
 import { profileApi } from '../../lib/endpoints'
 import './AppShell.css'
 
@@ -47,6 +48,7 @@ export function AppShell() {
           ))}
         </nav>
         <div className="shell-user">
+          <ThemeToggle className="shell-theme" />
           <div className="shell-user-identity">
             <Avatar avatarUrl={profileQuery.data?.avatarUrl} firstName={user?.firstName} lastName={user?.lastName} size={36} />
             <div>

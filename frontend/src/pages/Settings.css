@@ -5,7 +5,7 @@
 }
 .settings-section h2 {
   font-size: 16px;
-  color: var(--paper);
+  color: var(--text);
   margin-bottom: 18px;
 }
 
@@ -14,17 +14,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line);
   font-size: 14px;
 }
 .settings-row:last-child {
   border-bottom: none;
 }
 .settings-row .mono {
-  color: var(--slate);
+  color: var(--text-muted);
 }
 .settings-row span:last-child {
-  color: var(--paper);
+  color: var(--text);
 }
 
 .plan-badge {
@@ -44,13 +44,13 @@
   display: flex;
   justify-content: space-between;
   font-size: 13px;
-  color: var(--slate);
+  color: var(--text-muted);
   margin-bottom: 8px;
 }
 .usage-bar {
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--hover-wash);
   overflow: hidden;
 }
 .usage-bar-fill {
@@ -61,7 +61,7 @@
 }
 
 .settings-danger p {
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
   margin-bottom: 16px;
 }

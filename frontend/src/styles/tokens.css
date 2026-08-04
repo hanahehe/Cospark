@@ -1,34 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
+/*
+ * Two layers of colour:
+ *
+ *  1. RAW PALETTE + BRAND — identical in every theme. The brand accents have to stay
+ *     put, and the raw ink/paper values are still used directly by the login screen,
+ *     whose dark-panel/light-panel split is a deliberate design, not a dark theme.
+ *  2. SEMANTIC TOKENS — these are what the app actually paints with, and they flip
+ *     between themes. Always reach for these (--bg, --text, --surface, --line…)
+ *     rather than a raw colour, or the new element won't follow the theme.
+ */
 :root {
-  /* Brand palette — matches the reference login screen exactly */
+  /* ---- Raw palette (constant) ---- */
   --ink: #0e1225;
   --ink-2: #161b33;
-  --ink-3: #1d2340;
   --paper: #f7f4ec;
-  --paper-dim: #ede9dd;
+  --slate: #9ba0be;
+  --slate-dark: #4a4f63;
+  --line-dark: rgba(247, 244, 236, 0.12);
+
+  /* ---- Brand accents (constant) ---- */
   --spark: #ffb447;
   --ember: #ff6b4a;
   --wire: #5eead4;
-  --slate: #9ba0be;
-  --slate-dark: #4a4f63;
 
-  --line-dark: rgba(247, 244, 236, 0.12);
-  --line-light: rgba(14, 18, 37, 0.1);
+  /* Text placed on a brand-coloured surface (amber/ember button, avatar gradient).
+     Stays dark in both themes — light text on amber is unreadable. */
+  --on-accent: #0e1225;
 
-  --glass-dark: rgba(255, 255, 255, 0.05);
-  --glass-dark-strong: rgba(255, 255, 255, 0.09);
-  --glass-light: rgba(255, 255, 255, 0.66);
-  --glass-light-strong: rgba(255, 255, 255, 0.85);
-  --glass-blur: 22px;
+  /* ---- Semantic tokens: DARK (default) ---- */
+  --bg: #0e1225;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.09);
+  --surface-solid: #161b33;
+  --field-bg: rgba(255, 255, 255, 0.03);
+  --hover-wash: rgba(255, 255, 255, 0.05);
+  --text: #f7f4ec;
+  --text-muted: #9ba0be;
+  --text-subtle: #6f7590;
+  --line: rgba(247, 244, 236, 0.12);
+  --scroll-thumb: rgba(247, 244, 236, 0.14);
+  --skeleton-base: rgba(255, 255, 255, 0.04);
+  --skeleton-sheen: rgba(255, 255, 255, 0.09);
+
+  --glow-spark: rgba(255, 180, 71, 0.06);
+  --glow-wire: rgba(94, 234, 212, 0.045);
+
+  --shadow-soft: 0 10px 28px rgba(14, 18, 37, 0.22);
+  --shadow-lift: 0 8px 18px rgba(14, 18, 37, 0.2);
 
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
-
-  --shadow-soft: 0 10px 28px rgba(14, 18, 37, 0.22);
-  --shadow-lift: 0 8px 18px rgba(14, 18, 37, 0.2);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 150ms;
@@ -38,4 +62,32 @@
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+
+  color-scheme: dark;
+}
+
+/* ---- Semantic tokens: LIGHT ---- */
+:root[data-theme='light'] {
+  --bg: #f7f4ec;
+  /* Cards are near-white so they lift off the warm cream page background. */
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.88);
+  --surface-solid: #ffffff;
+  --field-bg: #ffffff;
+  --hover-wash: rgba(14, 18, 37, 0.05);
+  --text: #14182b;
+  --text-muted: #545b73;
+  --text-subtle: #5e6479;
+  --line: rgba(14, 18, 37, 0.14);
+  --scroll-thumb: rgba(14, 18, 37, 0.18);
+  --skeleton-base: rgba(14, 18, 37, 0.05);
+  --skeleton-sheen: rgba(14, 18, 37, 0.1);
+
+  --glow-spark: rgba(255, 180, 71, 0.16);
+  --glow-wire: rgba(94, 234, 212, 0.13);
+
+  --shadow-soft: 0 10px 28px rgba(14, 18, 37, 0.09);
+  --shadow-lift: 0 8px 18px rgba(14, 18, 37, 0.08);
+
+  color-scheme: light;
 }

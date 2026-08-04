@@ -19,11 +19,11 @@
 }
 .public-profile-header-info h1 {
   font-size: clamp(22px, 3vw, 28px);
-  color: var(--paper);
+  color: var(--text);
 }
 .public-profile-headline {
   margin-top: 8px;
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 14px;
 }
 .public-profile-meta {
@@ -70,15 +70,15 @@
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text-muted);
 }
 .public-profile-composer textarea {
   width: 100%;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line-dark);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--paper);
+  border: 1px solid var(--line);
+  background: var(--field-bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 14px;
   resize: vertical;
@@ -99,11 +99,11 @@
 }
 .public-profile-section h2 {
   font-size: 16px;
-  color: var(--paper);
+  color: var(--text);
   margin-bottom: 12px;
 }
 .public-profile-section p {
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.7;
 }
@@ -122,7 +122,7 @@
   gap: 14px;
 }
 .public-profile-notfound p {
-  color: var(--slate);
+  color: var(--text-muted);
 }
 
 @media (max-width: 600px) {

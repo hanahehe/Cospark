@@ -3,7 +3,7 @@
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 8px;
 }
@@ -14,8 +14,8 @@
   gap: 8px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line-dark);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  background: var(--field-bg);
   transition: border-color var(--dur-fast) var(--ease-out);
 }
 .tag-input-box:focus-within {
@@ -53,11 +53,11 @@
   background: none;
   border: none;
   outline: none;
-  color: var(--paper);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 14px;
   padding: 5px 0;
 }
 .tag-input-box input::placeholder {
-  color: var(--slate);
+  color: var(--text-muted);
 }

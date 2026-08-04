@@ -30,7 +30,7 @@
   text-align: center;
   font-size: 11px;
   font-weight: 600;
-  color: var(--paper);
+  color: var(--text);
   background: rgba(14, 18, 37, 0.55);
   opacity: 0;
   transition: opacity var(--dur-fast) var(--ease-out);
@@ -45,12 +45,12 @@
 .profile-avatar-name {
   font-family: var(--font-display);
   font-size: 18px;
-  color: var(--paper);
+  color: var(--text);
 }
 .profile-avatar-hint {
   margin-top: 6px;
   font-size: 13px;
-  color: var(--slate);
+  color: var(--text-muted);
 }
 
 .profile-form {
@@ -72,7 +72,7 @@
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 8px;
 }
@@ -83,9 +83,9 @@
   width: 100%;
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--line-dark);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--paper);
+  border: 1px solid var(--line);
+  background: var(--field-bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 14px;
   transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
@@ -104,7 +104,7 @@
   cursor: pointer;
 }
 .field select option {
-  background: var(--ink-2);
+  background: var(--surface-solid);
 }
 
 .profile-save {
@@ -117,7 +117,7 @@
 }
 .profile-endorsements h2 {
   font-size: 18px;
-  color: var(--paper);
+  color: var(--text);
   margin-bottom: 16px;
 }
 .endorsement-list {
@@ -135,13 +135,13 @@
   color: var(--spark);
 }
 .endorsement-card p {
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: 13px;
   line-height: 1.6;
 }
 .endorsement-by {
   font-size: 12px;
-  color: var(--slate-dark);
+  color: var(--text-subtle);
 }
 
 @media (max-width: 640px) {

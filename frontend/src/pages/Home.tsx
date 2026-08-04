@@ -2,6 +2,7 @@ import { Navigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { usePageEntrance } from '../hooks/usePageEntrance'
 import { Logo } from '../components/Logo'
+import { ThemeToggle } from '../components/ThemeToggle'
 import './Home.css'
 
 const CHIPS = [
@@ -21,6 +22,7 @@ export function Home() {
       <header className="home-nav reveal">
         <Logo size={24} className="home-logo" />
         <div className="home-nav-actions">
+          <ThemeToggle compact />
           <Link to="/login" className="btn btn-ghost">
             Log in
           </Link>

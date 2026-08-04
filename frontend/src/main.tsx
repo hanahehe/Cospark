@@ -6,6 +6,7 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './context/ToastContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { warmUpBackend } from './lib/api'
 
 // Kick the (free-tier, sleep-after-inactivity) backend awake before the user can
@@ -25,11 +26,13 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <ToastProvider>
-            <App />
-          </ToastProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <ToastProvider>
+              <App />
+            </ToastProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>,
